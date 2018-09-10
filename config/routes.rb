@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
   
   root 'bios#index'
-
+  devise_for :users
+  resources :bios
+  
 end
