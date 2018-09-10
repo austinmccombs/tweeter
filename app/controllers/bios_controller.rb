@@ -3,6 +3,13 @@ class BiosController < ApplicationController
   end
 
   def create
+    @bio = Bio.new.create(params(bio_params))
+    @bio.user_id = current_user.id 
+      if @bio.save
+        redirect_to bio_path([:id])
+      else
+        render partial: "form"
+      end
   end
 
   def update
